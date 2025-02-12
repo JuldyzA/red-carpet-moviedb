@@ -1,21 +1,20 @@
 
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { appTitle } from "../globals/globals";
+import { GlobalContext } from "../context/GlobalContext";
+import MovieCard from "../components/MovieCard";
 
 const PageFavourites = () => {
-  useEffect(() => {
-    document.title = `${appTitle} - Favourites`;
-  }, []);
+  const { favourites } = useContext(GlobalContext)
 
   return (
     <main id="home">
-      <h2>Favourites</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit porro,
-        dolorem, quod facere enim voluptate provident quo labore vero repellat
-        nemo animi ad exercitationem rem quos, possimus libero deleniti
-        laudantium?
-      </p>
+              <div>
+            <h1>Favourites</h1>
+            {favourites.map((movie) => (
+                <MovieCard key={movie.id} movie={movie} />
+            ))}
+        </div>
     </main>
   );
 };

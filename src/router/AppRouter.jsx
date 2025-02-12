@@ -9,11 +9,12 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Main from '../components/Main';
 import Movie from '../utilities/api'
-
+import { GlobalProvider } from '../context/GlobalContext'
 
 function AppRouter(){
   return (
     <BrowserRouter>
+    <GlobalProvider>
       <Header />
       <div>
           <Routes>
@@ -24,7 +25,8 @@ function AppRouter(){
             <Route path="*"           element={<PageNotFound />} />
             </Routes>
       </div>   
-      <Footer />
+        <Footer />
+      </GlobalProvider>
     </BrowserRouter>
   )
 }
