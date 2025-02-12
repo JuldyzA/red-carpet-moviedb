@@ -21,17 +21,18 @@
     overflow: hidden;
     border-radius: 10px;
     transition: transform 0.3s ease-in-out;
+    box-shadow: 1px 2px 5px rgba(196, 7, 7, 0.5); 
 }
 
 .movie-card img {
     width: 100%;
-    height: auto;
     background: rgba(126, 2, 2, 0.746); 
     backdrop-filter: blur(10px); 
-    box-shadow: 10px 18px 44px rgba(196, 7, 7, 0.5); 
-    border-radius: 16px;
+    border-radius: 10px;
     padding: 2px;
     transition: 0.3s ease-in-out;
+    object-fit: cover;
+    height: 100%;
 }
 
 
