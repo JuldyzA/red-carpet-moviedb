@@ -116,10 +116,13 @@
     padding: 10px;
     text-align: center;
     transition: transform 0.3s ease-in-out;
-  
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .movie-overlay.hovered {
-    display: block;
+    display: flex;
 }
 
 .movie-card:hover {
@@ -133,19 +136,26 @@
     
 }
 
-
-button{
+.movie-rating{
     position: absolute;
-    left: 5%;
-    font-size: 1rem;
-    bottom: 5%;
+    bottom: 1%;
+    right: 5%;
 }
-/* Desktop View */
-/* 3 columns for larger screens */
 
-/* @media (min-width: 600px) {
-    .movies-grid {
-        grid-template-columns: repeat(3, 1fr); }
-} */
+.rating-and-favourite {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 20px);
+}
 
+/* Remove any absolute positioning from button if it exists */
+button {
+    position: static;
+    font-size: 1rem;
+}
 

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { formatReleaseDate, formateRating } from "../utilities/toolbelt";
 import "../components/Movies.css";
 import { useNavigate } from 'react-router-dom';
+import FavouriteButton from './FavouriteButton';
+import RatingCircle from './RatingCircle';
 
 function MovieCard({ movie }) {
     const navigate =useNavigate();
@@ -16,9 +18,10 @@ function MovieCard({ movie }) {
             <div className={`movie-overlay ${isHovered ? 'hovered' : ''}`} >
                 <h2 className="movie-title">{movie.title}</h2>
                 <p className="movie-release">{formatReleaseDate(movie.release_date)}</p>
-                
-                <p className="movie-rating">⭐ {formateRating(movie.vote_average)}</p>
-                <button>💚</button>
+                <div className="rating-and-favourite">
+                    <RatingCircle rating={movie.vote_average} />
+                    <FavouriteButton movie={movie} />
+                </div>
             </div>
         </div>
     );
