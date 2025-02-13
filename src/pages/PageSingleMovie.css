@@ -18,7 +18,9 @@
   background: rgba(8, 2, 2, 0.5); 
 }
 
-.single-movie-details-container{
+/* Responsive Design */
+@media (min-width: 50em) {
+  .single-movie-details-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -30,51 +32,108 @@
     top: 10%;
     left: 0;
     right: 0;
+    margin-bottom: 20px; 
+    box-sizing: border-box;
   }
   
   .s-movie-image {
     flex: 1; 
     max-width: 50%; 
     padding: 10px;
-}
-
-  /* .s-movie-image img:hover {
-    transform: scale(1.1);
-  } */
+  }
 
   .s-movie-description {
     flex: 1; 
     max-width: 50%; 
     padding: 10px;
-}
+  }
 
-.s-movie-image img {
+  .s-movie-image img {
     max-width: 100%;
     height: auto;
     border-radius: 12px;
     box-shadow: 8px 8px 16px rgba(210, 205, 205, 0.4), -8px -8px 16px rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease-in-out;
-}
+  }
 
-.s-movie-description h3 {
+  .s-movie-description h3 {
     font-size: 2rem;
     color: #ffffff;
-}
+  }
 
-.s-movie-description p {
+  .s-movie-description p {
     font-size: 1rem;
     color: #ffffff;
     margin-bottom: 10px;
+  }
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .single-movie-details-container {
-        flex-direction: column;
-        align-items: center;
-    }
+.single-movie-details-container {
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 1rem;
+}
 
-    .s-movie-image, .s-movie-description {
-        max-width: 100%;
-    }
+.s-movie-image, .s-movie-description {
+  max-width: 70%;
+  text-align: left;
+}
+
+.s-movie-image {
+  width: 70%; 
+  height: auto;
+}
+
+.s-movie-description {
+  width: 100%; 
+  height: auto;
+}
+
+.s-movie-description h3 {
+  font-size: 1rem; 
+}
+
+.s-movie-description p {
+  font-size: 0.7rem; 
+}
+
+/* Responsive Design for iframe */
+@media (max-width: 50em) {
+  .emdeb-trailer iframe {
+    width: 80%;
+    height: auto;
+    aspect-ratio: 16 / 9; /* Maintain aspect ratio */
+  }
+
+  #single-movie-hero {
+    height: 50vh; /* Adjust height for smaller screens */
+  }
+
+  .single-movie-details-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .s-movie-image, .s-movie-description {
+    max-width: 100%;
+  }
+
+  .s-movie-image {
+    width: 80%; /* Make the image container smaller */
+    height: auto;
+  }
+
+  .s-movie-description {
+    width: 90%; /* Adjust the width of the description container */
+    height: auto;
+  }
+
+  .s-movie-description h3 {
+    font-size: 1.5rem; /* Make the font size smaller */
+  }
+
+  .s-movie-description p {
+    font-size: 0.9rem; /* Make the font size smaller */
+  }
 }

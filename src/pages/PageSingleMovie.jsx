@@ -1,8 +1,9 @@
+
 import { useEffect, useState } from "react"; 
 import { appTitle } from "../globals/globals";
 import { useParams } from "react-router-dom";
 import api from "../utilities/api";
-const { getMovieId } = api;
+const { getMovieId, getMovieVideos } = api;
 import "./PageSingleMovie.css";
 import { formateRating, formatReleaseDate } from "../utilities/toolbelt";
 
@@ -13,6 +14,7 @@ const PageSingleMovie = () => {
 
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
+  const [trailerId, setTrailerId] = useState(null);
 
   useEffect(() => {
     if (!id) return; 
@@ -24,6 +26,17 @@ const PageSingleMovie = () => {
       })
       .catch((error) => {
         alert("Error fetching movie:", error);
+      });
+
+    getMovieVideos(id)
+      .then((videoData) => {
+        const trailer = videoData.results.find(video => video.type === "Trailer" && video.site === "YouTube");
+        if (trailer) {
+          setTrailerId(trailer.key);
+        }
+      })
+      .catch((error) => {
+        alert("Error fetching movie videos:", error);
       });
   }, [id]);
 
@@ -53,9 +66,33 @@ const PageSingleMovie = () => {
         <p>Loading movie details...</p>
       )}
     </div>
+    <div className="emdeb-trailer">
+      <h2>Trailer</h2>
+      {trailerId ? (
+        <iframe
+          width="560"
+          height="315"
+          src={`https://www.youtube.com/embed/${trailerId}`}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      ) : (
+        <p>Trailer not available</p>
+      )}
+    </div>
+    <div className="single-movie-cast">
+      <h2>Cast</h2>
+      <p>Cast goes here</p>
+    </div>
+    <div className="single-movie-similar">
+      <h2>Similar Movies</h2>
+      <p>Similar movies go here</p>
+    </div>
     </>
-    
   );
 };
 
 export default PageSingleMovie;
+
