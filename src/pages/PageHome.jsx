@@ -71,9 +71,8 @@ const PageHome = () => {
          <section>
          <div id="home-movie-hero" >
             <FeaturedMovieHero />
-
           </div>
-           <h2>Hero Image </h2>
+        
            <Tabs>
              <TabList className="tab-list">
                 <Tab className="tab" onClick={() => fetchMovies("popular")}>Popular</Tab>
