@@ -99,7 +99,7 @@ async function getUpcomingMovies() {
 }
 
 async function getTrendingMovies() {
-  const response = await fetch(`${BASE_URL}/trending/movie/week?api_key=${API_KEY}`);
+  const response = await fetch(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}`);
   if (!response.ok) {
     throw new Error(`Network response was not ok: ${response.statusText}`);
   }

@@ -2,6 +2,7 @@ import api from "../utilities/api";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { IMG_URL } from "../globals/globals";
+import RatingCircle from "./RatingCircle";
 const { getTrendingMovies } = api;
 
 
@@ -16,7 +17,7 @@ const FeaturedMovieHero = () => {
         getTrendingMovies()
         .then((data) => {
             // get the first movie from the results array
-            setFeaturedMovie(data.results[0]);
+            setFeaturedMovie(data.results[10]);
         })
         .catch((error) => {
             console.error("Error fetching trending movies:", error);
@@ -35,7 +36,12 @@ const FeaturedMovieHero = () => {
                     src={`${IMG_URL}original${featuredMovie.backdrop_path}`} 
                     alt={featuredMovie.title} 
                 />
-                <h2 className="featured-movie-title">{featuredMovie.title}</h2>
+                <div className="featured-movie-overlay">
+                    <h2 className="featured-movie-title">{featuredMovie.title}</h2>
+                    <div className="featured-movie-rating">
+                        <RatingCircle rating={featuredMovie.vote_average} />
+                    </div>
+                </div>
             </div>
         </div>
     );
