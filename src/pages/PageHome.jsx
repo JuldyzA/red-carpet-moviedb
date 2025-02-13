@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { appTitle } from "../globals/globals";
 
 import Movies from "../components/Movies";
-import wildRobot from "../images/wild-robot.png";
+import FeaturedMovieHero from "../components/FeaturedMovieHero";
 import "../components/Movies.css";
 
 
@@ -71,11 +71,9 @@ const PageHome = () => {
     <main>
          <section>
          <div id="home-movie-hero" >
-           
-            <img src={wildRobot} alt="Wild Robot" />
-
+            <FeaturedMovieHero />
           </div>
-           <h2>Hero Image </h2>
+        
            <Tabs>
              <TabList className="tab-list">
                 <Tab className="tab" onClick={() => fetchMovies("popular")}>Popular</Tab>

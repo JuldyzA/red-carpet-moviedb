@@ -98,10 +98,22 @@ async function getUpcomingMovies() {
   return data;
 }
 
+async function getTrendingMovies() {
+  const response = await fetch(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}`);
+  if (!response.ok) {
+    throw new Error(`Network response was not ok: ${response.statusText}`);
+  }
+  const data = await response.json();
+  return data;
+}
+
+
+
 
 export default {getPopularMovies, getMovieId, 
   getTopRatedMovies, 
   getNowPlayingMovies, 
   getUpcomingMovies,
-  getHeroImagePopular
+  getHeroImagePopular,
+  getTrendingMovies
 };
