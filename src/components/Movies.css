@@ -1,5 +1,5 @@
 .movies-container {
-    padding: 5rem;
+    padding: 1rem;
     text-align: center;
 }
 
@@ -9,12 +9,21 @@
 }
 
 .movies-grid {
+    grid-template-columns: repeat(1, 1fr); /* 1 column for very small screens */
+}
+
+
+
+
+/* DESKTOP VIEW */
+
+/* .movies-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
     gap: 20px;
     justify-content: center;
     padding: 10px;
-}
+} */
 
 .movie-card {
     position: relative;
@@ -66,19 +75,7 @@
     
 }
 
-.movie-release {
-    position: absolute;
-    font-size: 1.2rem;
-    top: 30%;
-    opacity: 0.8;
-}
 
-.movie-rating {
-    position: absolute;
-    right: 5%;
-    font-size: 1rem;
-    bottom: 5%;
-}
 button{
     position: absolute;
     left: 5%;
@@ -101,7 +98,5 @@ button{
 }
 
 @media (max-width: 400px) {
-    .movies-grid {
-        grid-template-columns: repeat(1, 1fr); /* 1 column for very small screens */
-    }
+    
 }
