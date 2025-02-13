@@ -9,6 +9,7 @@ import Movies from "../components/Movies";
 import wildRobot from "../images/wild-robot.png";
 import "../components/Movies.css";
 
+
 import api from "../utilities/api";
 const { getPopularMovies } = api;
 const { getTopRatedMovies } = api;
@@ -70,6 +71,7 @@ const PageHome = () => {
     <main>
          <section>
          <div id="home-movie-hero" >
+           
             <img src={wildRobot} alt="Wild Robot" />
 
           </div>
