@@ -124,4 +124,5 @@ export default {getPopularMovies, getMovieId,
   getUpcomingMovies,
   getHeroImagePopular,
   getMovieVideos,
+  getTrendingMovies
 };
