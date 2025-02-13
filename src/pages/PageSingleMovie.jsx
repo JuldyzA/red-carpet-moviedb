@@ -38,15 +38,17 @@ const PageSingleMovie = () => {
     </div>
     <div className="single-movie-details-container">
       {movie ? (
+        <div className="single-movie-details-container">
         <div className="s-movie-image">
-          <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={movie.title} />
-          <div>
-            <h3 className="s-movie-title">{movie.title}</h3>
-            <p className="s-movie-rating">Rating: {formateRating(movie.vote_average)}</p>
-            <p className="s-movie-release-date">Release Date: {formatReleaseDate(movie.release_date)}</p>
-            <p className="s-movie-overview">{movie.overview}</p>
-          </div>
+            <img src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`} alt={movie.title} />
         </div>
+        <div className="s-movie-description">
+            <h3>{movie.title}</h3>
+            <p>{movie.overview}</p>
+            <p>Release Date: {movie.release_date}</p>
+            <p>Rating: {movie.vote_average}</p>
+        </div>
+      </div>
       ) : (
         <p>Loading movie details...</p>
       )}
