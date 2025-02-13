@@ -22,7 +22,7 @@ p {
 
 /* TABLET VIEW */
 @media (min-width: 25rem) {
-    .movies-grid {
+    .favourites-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
     }
@@ -31,7 +31,7 @@ p {
 
 /* TABLET VIEW */
 @media (min-width: 40.625rem) {
-    .movies-grid {
+    .favourites-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr); /* 3 columns for smaller screens */
     }
@@ -42,9 +42,9 @@ p {
 
 /* DESKTOP VIEW */
 @media (min-width: 62.5rem) {
-    .movies-grid {
+    .favourites-grid {
         display: grid;
-        grid-template-columns: repeat(4, 1fr); /* 3 columns for smaller screens */
+        grid-template-columns: repeat(4, 1fr); 
     }
     .movie-info {
         display: none;
@@ -53,9 +53,9 @@ p {
 
 /* DESKTOP VIEW */
 @media (min-width: 81.25rem) {
-    .movies-grid {
+    .favourites-grid {
         display: grid;
-        grid-template-columns: repeat(5, 1fr); /* 3 columns for smaller screens */
+        grid-template-columns: repeat(5, 1fr); 
     }
     .movie-info {
         display: none;
@@ -64,9 +64,9 @@ p {
 
 /* DESKTOP VIEW */
 @media (min-width: 100rem) {
-    .movies-grid {
+    .favourites-grid {
         display: grid;
-        grid-template-columns: repeat(6, 1fr); /* 3 columns for smaller screens */
+        grid-template-columns: repeat(6, 1fr); 
         padding: 5rem;
     }
     .movie-info {

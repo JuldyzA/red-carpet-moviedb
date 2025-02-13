@@ -8,7 +8,7 @@ import "../pages/PageFavourites.css"
 import "../components/Movies.css";
 import { formatReleaseDate, formateRating } from "../utilities/toolbelt";
 import Movies from "../components/Movies";
-
+import RatingCircle from "../components/RatingCircle";
 const PageFavourites = () => {
   const { favourites } = useContext(GlobalContext)
 
@@ -16,7 +16,9 @@ const PageFavourites = () => {
     <main id="home">
       <h1>Favourites</h1>
       <p>
-        All your favourite movies.
+      {favourites.length === 0 
+          ? "You have not added any favourite movies."
+          : "All your favourite movies."}
       </p>
       <div className="favourites-container">
         <div className="favourites-grid">
@@ -24,9 +26,10 @@ const PageFavourites = () => {
                 <div className="movie-item" key={movie.id}>
                 <MovieCard movie={movie} />
                 <div className="movie-info"> {/* HIDE THIS FOR DESKTOP VIEW */}
+                  <FavouriteButton movie={movie} />
                     <h2>{movie.title}</h2>
                     <p className="movie-release">{formatReleaseDate(movie.release_date)}</p>
-                    <p className="movie-rating">⭐ {formateRating(movie.vote_average)}</p>
+                    <RatingCircle rating={movie.vote_average} />
                 </div>
             </div>
             ))}
