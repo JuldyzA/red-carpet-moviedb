@@ -1,20 +1,87 @@
 .movies-container {
-    padding: 20px;
+    padding: 1rem;
     text-align: center;
 }
 
 .movies-container h1 {
     font-size: 2rem;
     margin-bottom: 20px;
+    padding: 1rem;
 }
 
+/* MOBILE VIEW */
 .movies-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem; /* 1 column for very small screens */
+}
+
+/* TABLET VIEW */
+@media (min-width: 25rem) {
+    .movies-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+    }
+
+}
+
+/* TABLET VIEW */
+@media (min-width: 40.625rem) {
+    .movies-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 columns for smaller screens */
+    }
+    .movie-info h2 {
+        font-size: 1.2rem;
+    }
+}
+
+/* DESKTOP VIEW */
+@media (min-width: 62.5rem) {
+    .movies-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 3 columns for smaller screens */
+    }
+    .movie-info {
+        display: none;
+    }
+}
+
+/* DESKTOP VIEW */
+@media (min-width: 81.25rem) {
+    .movies-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr); /* 3 columns for smaller screens */
+    }
+    .movie-info {
+        display: none;
+    }
+}
+
+/* DESKTOP VIEW */
+@media (min-width: 100rem) {
+    .movies-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr); /* 3 columns for smaller screens */
+        padding: 5rem;
+    }
+    .movie-info {
+        display: none;
+    }
+}
+
+
+
+
+/* DESKTOP VIEW */
+
+/* .movies-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
     gap: 20px;
     justify-content: center;
     padding: 10px;
-}
+} */
 
 .movie-card {
     position: relative;
@@ -49,10 +116,13 @@
     padding: 10px;
     text-align: center;
     transition: transform 0.3s ease-in-out;
-  
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .movie-overlay.hovered {
-    display: block;
+    display: flex;
 }
 
 .movie-card:hover {
@@ -66,42 +136,26 @@
     
 }
 
-.movie-release {
+.movie-rating{
     position: absolute;
-    font-size: 1.2rem;
-    top: 30%;
-    opacity: 0.8;
-}
-
-.movie-rating {
-    position: absolute;
+    bottom: 1%;
     right: 5%;
-    font-size: 1rem;
-    bottom: 5%;
 }
-button{
+
+.rating-and-favourite {
     position: absolute;
-    left: 5%;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(100% - 20px);
+}
+
+/* Remove any absolute positioning from button if it exists */
+button {
+    position: static;
     font-size: 1rem;
-    bottom: 5%;
-}
-/* Desktop View */
-/* 3 columns for larger screens */
-
-/* @media (min-width: 600px) {
-    .movies-grid {
-        grid-template-columns: repeat(3, 1fr); }
-} */
-
-/* Mobile View */
-@media (max-width: 600px) {
-    .movies-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
-    }
 }
 
-@media (max-width: 400px) {
-    .movies-grid {
-        grid-template-columns: repeat(1, 1fr); /* 1 column for very small screens */
-    }
-}

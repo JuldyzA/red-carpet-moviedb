@@ -1,4 +1,4 @@
-const appTitle = 'RED CARPET';
+const appTitle = 'Red Carpet';
 
 const IMG_URL = 'http://image.tmdb.org/t/p/'
 
