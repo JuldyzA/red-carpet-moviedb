@@ -1,25 +1,59 @@
 #single-movie-hero {
-  position: relative;
+  padding: 6rem 1rem 1rem;
   width: 100%;
-  height: 100vh;
+  height: auto;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  position: relative;
 }
 
-/* Overlay using ::before */
-#single-movie-hero::before {
+#single-movie-hero::after {
   content: "";
   position: absolute;
   top: 0;
+  bottom: 0;
   left: 0;
+  right: 0;
+  background-color: #00000095;
+}
+
+#single-movie-hero .single-movie-details-container {
+  
+  opacity: 1;
+  position: relative;
+  z-index: 10;
+}
+
+.s-movie-image img {
+  max-width: 100%;
+  max-height: 35rem;
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 8px 8px 16px rgba(34, 34, 34, 0.4),
+    -8px -8px 16px rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.emdeb-trailer,
+.single-movie-cast,
+.single-movie-similar {
+  margin: clamp(1rem, 5vw, 2.5rem);
+}
+
+.emdeb-trailer iframe {
   width: 100%;
-  height: 100%;
-  background: rgba(8, 2, 2, 0.5); 
+  height: auto;
+  aspect-ratio: 16 / 9; 
 }
 
 /* Responsive Design */
 @media (min-width: 50em) {
+  #single-movie-hero {
+    height: 100vh;
+  }
+
   .single-movie-details-container {
     display: flex;
     flex-direction: row;
@@ -32,19 +66,19 @@
     top: 10%;
     left: 0;
     right: 0;
-    margin-bottom: 20px; 
+    margin-bottom: 30px;
     box-sizing: border-box;
   }
-  
+
   .s-movie-image {
-    flex: 1; 
-    max-width: 50%; 
+    flex: 1;
+    max-width: 70%;
     padding: 10px;
   }
 
   .s-movie-description {
-    flex: 1; 
-    max-width: 50%; 
+    flex: 1;
+    max-width: 50%;
     padding: 10px;
   }
 
@@ -52,88 +86,34 @@
     max-width: 100%;
     height: auto;
     border-radius: 12px;
-    box-shadow: 8px 8px 16px rgba(210, 205, 205, 0.4), -8px -8px 16px rgba(255, 255, 255, 0.1);
+    box-shadow: 8px 8px 16px rgba(210, 205, 205, 0.4),
+      -8px -8px 16px rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease-in-out;
   }
 
   .s-movie-description h3 {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: #ffffff;
   }
 
   .s-movie-description p {
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #ffffff;
     margin-bottom: 10px;
   }
-}
-
-.single-movie-details-container {
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  margin: 1rem;
-}
-
-.s-movie-image, .s-movie-description {
-  max-width: 70%;
-  text-align: left;
-}
-
-.s-movie-image {
-  width: 70%; 
-  height: auto;
-}
-
-.s-movie-description {
-  width: 100%; 
-  height: auto;
-}
-
-.s-movie-description h3 {
-  font-size: 1rem; 
-}
-
-.s-movie-description p {
-  font-size: 0.7rem; 
-}
-
-/* Responsive Design for iframe */
-@media (max-width: 50em) {
-  .emdeb-trailer iframe {
-    width: 80%;
-    height: auto;
-    aspect-ratio: 16 / 9; /* Maintain aspect ratio */
-  }
-
-  #single-movie-hero {
-    height: 50vh; /* Adjust height for smaller screens */
-  }
-
-  .single-movie-details-container {
+  .emdeb-trailer {
+    display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    margin: 4rem;
+    font-size: 1.6rem;
   }
-
-  .s-movie-image, .s-movie-description {
-    max-width: 100%;
-  }
-
-  .s-movie-image {
-    width: 80%; /* Make the image container smaller */
+  .emdeb-trailer iframe {
+    width: 100%;
     height: auto;
-  }
-
-  .s-movie-description {
-    width: 90%; /* Adjust the width of the description container */
-    height: auto;
-  }
-
-  .s-movie-description h3 {
-    font-size: 1.5rem; /* Make the font size smaller */
-  }
-
-  .s-movie-description p {
-    font-size: 0.9rem; /* Make the font size smaller */
+    aspect-ratio: 16 / 9;
+    border-radius: 20px;
+    box-shadow: 8px 8px 16px rgba(210, 205, 205, 0.4),
+      -8px -8px 16px rgba(255, 255, 255, 0.1);
   }
 }
