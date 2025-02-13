@@ -2,7 +2,7 @@ import React from 'react';
 import "./Movies.css";
 import MovieCard from './MovieCard';
 import { formatReleaseDate, formateRating } from "../utilities/toolbelt";
-
+import RatingCircle from './RatingCircle';
 function Movies({ title, movies }) {
     const movieList = Array.isArray(movies) ? movies : [];
 
@@ -15,7 +15,7 @@ function Movies({ title, movies }) {
                         <div className="movie-info"> {/* HIDE THIS FOR DESKTOP VIEW */}
                             <h2>{movie.title}</h2>
                             <p className="movie-release">{formatReleaseDate(movie.release_date)}</p>
-                            <p className="movie-rating">⭐ {formateRating(movie.vote_average)}</p>
+                            <RatingCircle rating={movie.vote_average} />
                         </div>
                     </div>
                 ))}
