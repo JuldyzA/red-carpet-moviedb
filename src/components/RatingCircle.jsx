@@ -1,6 +1,9 @@
 import React from 'react';
 import "./RatingCircle.css";
 
+
+// This code was created by Cursor AI, with some helpful and specific prompting from Angus ;)
+
 function RatingCircle({ rating }) {
     // Convert rating to percentage (0-10 to 0-100)
     const percentage = (rating / 10) * 100;
