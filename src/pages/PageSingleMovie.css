@@ -15,7 +15,12 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #00000095;
+  background: linear-gradient(
+    to bottom,
+    #00000095 0%,
+    #00000095 75%,
+    #1a1919 100%
+  );
 }
 
 #single-movie-hero .single-movie-details-container {
@@ -100,7 +105,7 @@ p.date{
   .s-movie-description {
     flex: 1;
     max-width: 50%;
-    padding: 10px;
+    padding: 1rem 2rem;
     background-color: #1a191995;
     border-radius: 20px;
     backdrop-filter: blur(10px);

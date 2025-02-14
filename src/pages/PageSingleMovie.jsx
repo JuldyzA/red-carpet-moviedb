@@ -10,7 +10,8 @@ import FavouriteButton from "../components/FavouriteButton";
 
 const PageSingleMovie = () => {
   useEffect(() => {
-    document.title = `${appTitle} - Single Movie`;
+    document.title = `${appTitle} - ${movie?.title}`; // Try to fix how to dynamically change the title to the page title
+    window.scrollTo(0, 0);
   }, []);
 
   const { id } = useParams();
