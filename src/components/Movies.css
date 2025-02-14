@@ -18,6 +18,7 @@
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 1rem; /* 1 column for very small screens */
+    padding-top: 1rem;
 }
 
 /* TABLET VIEW */
@@ -195,6 +196,8 @@ button {
     object-fit: cover;
     border-radius: 10px;
     transition: 0.3s ease-in-out;
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.576);
+    
 }
 
 .featured-movie-hero img:hover {
