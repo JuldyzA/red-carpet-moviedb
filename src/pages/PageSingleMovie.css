@@ -69,18 +69,6 @@ p.date{
   margin: 2rem;
 }
 
-.rating-circle svg {
-  width: auto; 
-  height: 60px; 
-}
-
-button {
-  font-size: 1.8rem; 
-  padding: 10px;
-  border-radius: 30%;
-  background-color: rgba(54, 50, 51, 0.2);
-  backdrop-filter: blur(5px);
-}
 
 @media (min-width: 50em) {
   #single-movie-hero {
@@ -158,13 +146,5 @@ button {
   .rating-circle svg {
     width: auto; 
     height: 80px; 
-  }
-  
-  button {
-    font-size: 2.2rem; 
-    padding: 10px;
-    border-radius: 30%;
-    background-color: rgba(54, 50, 51, 0.2);
-    backdrop-filter: blur(5px);
   }
 }

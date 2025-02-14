@@ -10,5 +10,36 @@
 }
 
 .rating-circle text {
-    font-family: Arial, sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Default size for movie cards */
+.rating-circle svg {
+    width: 50px;
+    height: 50px;
+}
+
+/* Larger size for hover state */
+.movie-overlay.hovered .rating-circle svg {
+    width: 50px;
+    height: 50px;
+}
+
+/* Largest size for single movie page */
+.s-movie-rating .rating-circle svg {
+    width: 80px;
+    height: 80px;
+}
+
+/* Adjust text size accordingly */
+.rating-circle text {
+    font-size: 14px;
+}
+
+.movie-overlay.hovered .rating-circle text {
+    font-size: 1rem;
+}
+
+.s-movie-rating .rating-circle text {
+    font-size: 1em;
 }

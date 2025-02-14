@@ -139,6 +139,10 @@
     right: 5%;
 }
 
+.hovered-movie-rating {
+    width: 50%;
+}
+
 .rating-and-favourite {
     position: absolute;
     bottom: 10px;
@@ -150,6 +154,12 @@
     width: calc(100% - 20px);
 }
 
+.rating-and-favourite-mobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+}
 /* Remove any absolute positioning from button if it exists */
 button {
     position: static;

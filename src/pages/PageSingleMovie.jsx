@@ -70,7 +70,7 @@ const PageSingleMovie = () => {
               </div>
               <div className="s-movie-rating">
               <RatingCircle rating={movie.vote_average} />
-              <FavouriteButton movie={movie} className="large-favourite"/>
+              <FavouriteButton  movie={movie} className="large-favourite"/>
               </div>
             </div>
             

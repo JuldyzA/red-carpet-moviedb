@@ -19,7 +19,7 @@ function MovieCard({ movie }) {
                 <h2 className="movie-title">{movie.title}</h2>
                 <p className="movie-release">{formatReleaseDate(movie.release_date)}</p>
                 <div className="rating-and-favourite">
-                    <RatingCircle rating={movie.vote_average} />
+                    <RatingCircle className="hovered-movie-rating" rating={movie.vote_average} />
                     <FavouriteButton movie={movie} />
                 </div>
             </div>

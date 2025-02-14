@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 import "./FavouriteButton.css"
 
-function FavouriteButton({ movie }){
+function FavouriteButton({ movie, className }){
     const { favourites, addFavourite, removeFavourite } = useContext(GlobalContext)
 
     // determine whether the movie was already in favs
@@ -19,7 +19,7 @@ function FavouriteButton({ movie }){
         }
     }
 
-    return <button onClick={handleClick}>{isFavourite ? "❤️" : "🤍"}  </button>
+    return <button className={className} onClick={handleClick}>{isFavourite ? "❤️" : "🤍"}  </button>
 }
 
 export default FavouriteButton
