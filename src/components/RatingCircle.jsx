@@ -10,8 +10,12 @@ function RatingCircle({ rating }) {
     
     // Calculate color based on rating
     const getColor = (rating) => {
-        if (rating >= 8) return '#21d07a';    // Green for high ratings
-        if (rating >= 6) return '#d2d531';    // Yellow for medium ratings
+        if (rating >= 9) return '#1a9f60';    // Dark green for exceptional ratings (9-10)
+        if (rating >= 8) return '#21d07a';    // Green for great ratings (8-8.9)
+        if (rating >= 7) return '#92ce41';    // Light green for good ratings (7-7.9)
+        if (rating >= 6) return '#d2d531';    // Yellow for above average ratings (6-6.9)
+        if (rating >= 5) return '#ffa336';    // Orange for average ratings (5-5.9)
+        if (rating >= 4) return '#ff6b4a';
         return '#db2360';                     // Red for low ratings
     };
 
@@ -21,6 +25,7 @@ function RatingCircle({ rating }) {
     const radius = 20;
     const circumference = 2 * Math.PI * radius;
     const strokeDasharray = `${(percentage * circumference) / 100} ${circumference}`;
+    console.log(strokeDasharray);
 
     return (
         <div className="rating-circle">
