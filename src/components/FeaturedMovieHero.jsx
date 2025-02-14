@@ -29,8 +29,7 @@ const FeaturedMovieHero = () => {
     return (
         <div 
             onClick={() => navigate(`/movie/${featuredMovie.id}`)}
-            className="featured-movie-hero"
-        >
+            className="featured-movie-hero">
             <div className="featured-movie-content">
                 <img 
                     src={`${IMG_URL}original${featuredMovie.backdrop_path}`} 
@@ -39,7 +38,7 @@ const FeaturedMovieHero = () => {
                 <div className="featured-movie-overlay">
                     <h2 className="featured-movie-title">{featuredMovie.title}</h2>
                     <div className="featured-movie-rating">
-                        <RatingCircle rating={featuredMovie.vote_average} />
+                        <RatingCircle className="featured-movie-rating-circle" rating={featuredMovie.vote_average} />
                     </div>
                 </div>
             </div>

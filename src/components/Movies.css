@@ -3,7 +3,7 @@
 
 
 .movies-container {
-    padding: 1rem;
+    padding: 0 1rem;
     text-align: center;
 }
 
@@ -67,7 +67,7 @@
     .movies-grid {
         display: grid;
         grid-template-columns: repeat(6, 1fr); /* 3 columns for smaller screens */
-        padding: 5rem;
+        padding: 2rem 5rem;
     }
     .movie-info {
         display: none;
@@ -158,6 +158,17 @@ button {
 /*                                     FEATURED MOVIE HERO IMAGE                             */
 
 .featured-movie-hero {
+    margin-bottom: 1rem;
+}
+
+.featured-movie-overlay h2 {
+    font-size: 1rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    
+}
+
+.featured-movie-hero {
     padding-top: 6rem;
     display: flex;
     justify-content: center;
@@ -166,8 +177,16 @@ button {
 
 .featured-movie-content {
     position: relative;
-    width: 70%;
+    width: 90%;
     height: 100%;
+}
+
+@media (min-width: 25rem) {
+    .featured-movie-content {
+        width: 70%;
+        
+    }
+
 }
 
 .featured-movie-hero img {
@@ -186,10 +205,16 @@ button {
 .featured-movie-title {
     position: absolute;
     bottom: 1px;
-    left: 20px;
+    left: 10px;
     color: white;
-    
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+@media (min-width: 80rem) {
+    .featured-movie-overlay h2 {
+        font-size: 2rem;
+    }
+
 }
 
 .featured-movie-rating {
@@ -198,27 +223,8 @@ button {
     right: 10px;
 }
 
-.carousel-dots {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-    z-index: 2;
-}
 
-.carousel-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
 
-.carousel-dot.active {
-    background-color: white;
-}
+
 
 
