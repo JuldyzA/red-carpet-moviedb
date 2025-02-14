@@ -5,6 +5,8 @@ import api from "../utilities/api";
 const { getMovieId, getMovieVideos } = api;
 import "./PageSingleMovie.css";
 import { formateRating, formatReleaseDate } from "../utilities/toolbelt";
+import RatingCircle from "../components/RatingCircle";
+import FavouriteButton from "../components/FavouriteButton";
 
 const PageSingleMovie = () => {
   useEffect(() => {
@@ -60,38 +62,49 @@ const PageSingleMovie = () => {
               />
             </div>
             <div className="s-movie-description">
-              <h3>{movie.title}</h3>
-              <p>{movie.overview}</p>
-              <p>Release Date: {movie.release_date}</p>
-              <p>Rating: {movie.vote_average}</p>
+              <div className="s-movie-title">
+                <h3>{movie.title}</h3>
+                <p className="date">{movie.release_date}</p>
+                <p>{movie.overview}</p>
+              {/* <p>Rating: {movie.vote_average}</p> */}
+              </div>
+              <div className="s-movie-rating">
+              <RatingCircle rating={movie.vote_average} />
+              <FavouriteButton movie={movie} className="large-favourite"/>
+              </div>
             </div>
+            
           </div>
+          
         ) : (
           <p>Loading movie details...</p>
         )}
       </div>
-      <div className="emdeb-trailer">
-        <h2>Trailer</h2>
-        {trailerId ? (
-          <iframe
-            width="560"
-            height="315"
-            src={`https://www.youtube.com/embed/${trailerId}`}
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        ) : (
-          <p>Trailer not available</p>
-        )}
-      </div>
-      <div className="single-movie-cast">
-        <h2>Cast</h2>
-        <p>Cast goes here</p>
-      </div>
-      <div className="single-movie-similar">
+      <div className="trailer-section">
+        <div className="emdeb-trailer">
+          <h2>Trailer</h2>
+          {trailerId ? (
+            <iframe
+              width="560"
+              height="315"
+              src={`https://www.youtube.com/embed/${trailerId}`}
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          ) : (
+            <p>Trailer not available</p>
+          )}
+        </div>
+        <div className="single-movie-cast">
+          <h2>Cast</h2>
+          <p>Cast goes here</p>
+        </div>
+        <div className="single-movie-similar">
         <h2>Similar Movies</h2>
         <p>Similar movies go here</p>
+      </div>
+
       </div>
     </>
   );
