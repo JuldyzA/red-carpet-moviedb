@@ -183,6 +183,9 @@ button {
     position: relative;
     width: 90%;
     height: 100%;
+    opacity: 1;
+    
+
 }
 
 @media (min-width: 25rem) {
@@ -200,6 +203,7 @@ button {
     border-radius: 10px;
     transition: 0.3s ease-in-out;
     box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.576);
+    transition: 0.5s ease-in-out;
     
 }
 
@@ -230,7 +234,36 @@ button {
 }
 
 
+.featured-movie-hero {
+    position: relative;
+}
 
+.pagination-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+    
+}
+
+.pagination-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.576);
+}
+
+.pagination-dot.active {
+    background-color: white;
+}
 
 
 
