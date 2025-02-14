@@ -50,9 +50,9 @@
       font-size: 1.1rem;
   }
   .tab[aria-selected="true"] {
-    color: #ff4b2b;
-    border-top: 2px solid #ff4b2b;
-    border-bottom: 2px solid #ff4b2b;
+    color: #f82a2a;
+    border-top: 2px solid #f82a2a;
+    border-bottom: 2px solid #f82a2a;
     
 }
 }
