@@ -101,6 +101,11 @@ p.date{
     flex: 1;
     max-width: 50%;
     padding: 10px;
+    /* background-color: #1a191995;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(26, 25, 25, 0.3); */
+      
   }
 
   .s-movie-image img {
