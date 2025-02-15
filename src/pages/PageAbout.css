@@ -1,0 +1,57 @@
+.about-hero {
+    background-repeat: no-repeat;
+    /* an ai-generated fix to scale the background image so that it completely covers the container element. 
+    while maintaining its aspect ratio*/
+    background-size: cover;
+    height: calc(100vh - 3.125rem);
+    width: auto;
+    min-width: 100vw;
+    background-position: center;
+    position: relative;
+    background-color:rgba(0, 0, 0, 0.75);
+    background-blend-mode: overlay;
+}
+
+.about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 20px;
+    position: relative;
+    top: 10%;
+    left: 0;
+    right: 0;
+    /* the below was AI-generated trick for adding the blur effect without affecting the 
+    text inside the child elements */
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding-bottom: 3rem;
+}
+
+.about-container h1 {
+    padding: 0;
+}
+
+.about-container p {
+    font-size: 1.2rem;
+    max-width: 50rem;
+    text-align: left;
+}
+
+.tmdb-logo {
+    margin-top: 2rem;
+}
+
+.about-logo-full {
+    height: 8rem;
+    width: auto;
+    margin-top: 1rem;
+}
+
+@media (min-width: 50em) {
+
+    .about-logo-full {
+        height: 100%;
+        width: auto;
+    }
+}
