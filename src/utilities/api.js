@@ -116,13 +116,25 @@ async function getTrendingMovies() {
 }
 
 
+// get the first 5 cast members for a movie
+  async function getCastMembers(movieId) {
+    const response = await fetch(`${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`);
+    if (!response.ok) {
+      throw new Error(`Network response was not ok: ${response.statusText}`);
+    }
+    const data = await response.json();
+    return data.cast.slice(0, 5);
+  }
 
 
-export default {getPopularMovies, getMovieId, 
+
+export default {getPopularMovies, 
+  getMovieId, 
   getTopRatedMovies, 
   getNowPlayingMovies, 
   getUpcomingMovies,
   getHeroImagePopular,
   getMovieVideos,
-  getTrendingMovies
+  getTrendingMovies,
+  getCastMembers
 };

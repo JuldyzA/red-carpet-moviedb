@@ -25,7 +25,7 @@ function RatingCircle({ rating }) {
     const radius = 20;
     const circumference = 2 * Math.PI * radius;
     const strokeDasharray = `${(percentage * circumference) / 100} ${circumference}`;
-    console.log(strokeDasharray);
+    //console.log(strokeDasharray);
 
     return (
         <div className="rating-circle">
