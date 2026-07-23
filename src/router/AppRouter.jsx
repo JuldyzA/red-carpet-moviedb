@@ -4,13 +4,9 @@ import PageSingleMovie from "../pages/PageSingleMovie";
 import PageAbout from "../pages/PageAbout";
 import PageFavourites from "../pages/PageFavourites";
 import PageNotFound from "../pages/PageNotFound";
-import Nav from "../components/Nav";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Main from "../components/Main";
-import Movie from "../utilities/api";
 import { GlobalProvider } from "../context/GlobalContext";
-import { APP_TITLE } from "../globals/globals.js";
 
 function AppRouter() {
   return (
