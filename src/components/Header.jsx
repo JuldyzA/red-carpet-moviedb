@@ -1,5 +1,5 @@
 import Nav from './Nav';
-import { appTitle } from '../globals/globals';
+import { APP_TITLE as appTitle } from '../globals/globals';
 import { NavLink, useNavigate } from 'react-router-dom';
 import logo from '../images/RedCarpetLogo.svg';
 import logoFull from '../images/RedCarpetLogoFull.svg';

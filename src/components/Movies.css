@@ -41,14 +41,18 @@
     }
 }
 
+/* HIDE FALLBACK TEXT ON HOVER-CAPABLE DEVICES */
+@media (hover: hover) and (pointer: fine) {
+    .movie-info {
+        display: none;
+    }
+}
+
 /* DESKTOP VIEW */
 @media (min-width: 62.5rem) {
     .movies-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr); /* 3 columns for smaller screens */
-    }
-    .movie-info {
-        display: none;
     }
 }
 
@@ -58,9 +62,6 @@
         display: grid;
         grid-template-columns: repeat(5, 1fr); /* 3 columns for smaller screens */
     }
-    .movie-info {
-        display: none;
-    }
 }
 
 /* DESKTOP VIEW */
@@ -69,9 +70,6 @@
         display: grid;
         grid-template-columns: repeat(6, 1fr); /* 3 columns for smaller screens */
         padding: 2rem 5rem;
-    }
-    .movie-info {
-        display: none;
     }
 }
 

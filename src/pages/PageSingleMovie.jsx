@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { appTitle } from "../globals/globals";
+import { APP_TITLE as appTitle } from "../globals/globals";
 import { useParams } from "react-router-dom";
 import api from "../utilities/api";
 const { getMovieId, getMovieVideos, getCastMembers } = api;
@@ -7,8 +7,6 @@ import "./PageSingleMovie.css";
 import { formateRating, formatReleaseDate } from "../utilities/toolbelt";
 import RatingCircle from "../components/RatingCircle";
 import FavouriteButton from "../components/FavouriteButton";
-
-
 
 const PageSingleMovie = () => {
   useEffect(() => {
@@ -46,7 +44,7 @@ const PageSingleMovie = () => {
         alert("Error fetching movie videos:", error);
       });
 
-    getCastMembers(id)  // get the first 5 cast members for a movie
+    getCastMembers(id) // get the first 5 cast members for a movie
       .then((castData) => {
         console.log("here are the cast members");
         console.log(castData);
@@ -55,7 +53,6 @@ const PageSingleMovie = () => {
       .catch((error) => {
         alert("Error fetching cast members:", error);
       });
-
   }, [id]);
 
   return (
@@ -88,9 +85,7 @@ const PageSingleMovie = () => {
                 <FavouriteButton movie={movie} className="large-favourite" />
               </div>
             </div>
-
           </div>
-
         ) : (
           <p>Loading movie details...</p>
         )}
@@ -112,13 +107,11 @@ const PageSingleMovie = () => {
           )}
         </div>
         <div className="single-movie-cast">
-        <h2>Cast</h2>
-{/* with the help of AI, conditionally render the pictures and names of the first 5 cast members for the movie */}
+          <h2>Cast</h2>
+          {/* with the help of AI, conditionally render the pictures and names of the first 5 cast members for the movie */}
 
           {cast.length > 0 ? (
-            
             <div className="cast-list">
-
               {cast.slice(0, 5).map((member) => (
                 <div key={member.cast_id} className="cast-member">
                   {member.profile_path ? (
@@ -141,7 +134,6 @@ const PageSingleMovie = () => {
           <h2>Similar Movies</h2>
           <p>Similar movies go here</p>
         </div> */}
-
       </div>
     </>
   );
