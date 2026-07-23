@@ -14,7 +14,7 @@ import { APP_TITLE } from "../globals/globals.js";
 
 function AppRouter() {
   return (
-    <BrowserRouter basename={`/${APP_TITLE}`}>
+    <BrowserRouter>
       <GlobalProvider>
         <Header />
         <div>
