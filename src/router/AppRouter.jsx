@@ -11,6 +11,7 @@ import { GlobalProvider } from "../context/GlobalContext";
 function AppRouter() {
   return (
     <BrowserRouter>
+      <div className="film-grain" aria-hidden="true" />
       <GlobalProvider>
         <Header />
         <div>

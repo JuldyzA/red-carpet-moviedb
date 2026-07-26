@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { GlobalContext } from "../context/GlobalContext";
 import "./FavouriteButton.css"
 
-function FavouriteButton({ movie, className }){
+function FavouriteButton({ movie, className = "" }){
     const { favourites, addFavourite, removeFavourite } = useContext(GlobalContext)
 
     // determine whether the movie was already in favs
@@ -19,7 +19,18 @@ function FavouriteButton({ movie, className }){
         }
     }
 
-    return <button className={className} onClick={handleClick}>{isFavourite ? "❤️" : "🤍"}  </button>
+        const buttonClassName = ["favourite-button", className].filter(Boolean).join(" ");
+
+        return (
+            <button
+                type="button"
+                className={buttonClassName}
+                onClick={handleClick}
+                aria-label={isFavourite ? `Remove ${movie.title} from favourites` : `Add ${movie.title} to favourites`}
+            >
+                <span aria-hidden="true">{isFavourite ? "♥" : "♡"}</span>
+            </button>
+        );
 }
 
 export default FavouriteButton

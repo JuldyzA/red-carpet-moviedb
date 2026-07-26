@@ -1,134 +1,76 @@
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import "react-tabs/style/react-tabs.css";
-import "../style/styles-tabs.css";
-
 import { useEffect, useState } from "react";
 import { APP_TITLE as appTitle } from "../globals/globals";
-
-import Movies from "../components/Movies";
-import FeaturedMovieHero from "../components/FeaturedMovieHero";
-import "../components/Movies.css";
-
-import api from "../utilities/api";
-const { getPopularMovies } = api;
-const { getTopRatedMovies } = api;
-const { getNowPlayingMovies } = api;
-const { getUpcomingMovies } = api;
+import HeroSlider from "../components/HeroSlider";
+import GenreChips from "../components/GenreChips";
+import PosterRow from "../components/PosterRow";
+import { fetchGenres, fetchPopular, fetchTopRated, fetchTrending, fetchUpcoming } from "../lib/tmdb";
+import "./PageHome.css";
 
 const PageHome = () => {
+  const [trending, setTrending] = useState([]);
+  const [popular, setPopular] = useState([]);
+  const [topRated, setTopRated] = useState([]);
+  const [upcoming, setUpcoming] = useState([]);
+  const [genres, setGenres] = useState([]);
+  const [error, setError] = useState("");
+
   useEffect(() => {
     document.title = `${appTitle} - Home`;
   }, []);
 
-  const [popularMovies, setPopularMovies] = useState([]);
-  const [topRated, setTopRated] = useState([]);
-  const [nowPlaying, setNowPlaying] = useState([]);
-  const [upcoming, setUpcoming] = useState([]);
-
   useEffect(() => {
-    getPopularMovies()
-      .then((data) => {
-        setPopularMovies(data.results);
-      })
-      .catch((error) => {
-        alert("Error fetching popular movies", error);
-      });
-  }, []);
+    let isMounted = true;
 
-  useEffect(() => {
-    getTopRatedMovies()
-      .then((data) => {
-        setTopRated(data.results);
-      })
-      .catch((error) => {
-        alert("Error fetching top rated movies", error);
-      });
-  }, []);
+    async function loadHomeData() {
+      try {
+        const [trendingData, popularData, topRatedData, upcomingData, genresData] = await Promise.all([
+          fetchTrending("week"),
+          fetchPopular(),
+          fetchTopRated(),
+          fetchUpcoming(),
+          fetchGenres(),
+        ]);
 
-  useEffect(() => {
-    getNowPlayingMovies()
-      .then((data) => {
-        setNowPlaying(data.results);
-      })
-      .catch((error) => {
-        alert("Error fetching top rated movies", error);
-      });
-  }, []);
+        if (!isMounted) {
+          return;
+        }
 
-  useEffect(() => {
-    getUpcomingMovies()
-      .then((data) => {
-        setUpcoming(data.results);
-      })
-      .catch((error) => {
-        alert("Error fetching top rated movies", error);
-      });
+        setTrending(trendingData?.results || []);
+        setPopular(popularData?.results || []);
+        setTopRated(topRatedData?.results || []);
+        setUpcoming(upcomingData?.results || []);
+        setGenres(genresData?.genres || []);
+      } catch (fetchError) {
+        if (!isMounted) {
+          return;
+        }
+
+        console.error("Error loading home page data:", fetchError);
+        setError("We could not load the movie rows right now.");
+      }
+    }
+
+    loadHomeData();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (
-    <main>
-      <section>
-        <div id="home-movie-hero">
-          <FeaturedMovieHero />
-        </div>
+    <main className="home-page">
+      <HeroSlider movies={trending} />
 
-        <Tabs>
-          <TabList className="tab-list">
-            <Tab className="tab" onClick={() => fetchMovies("popular")}>
-              Popular
-            </Tab>
-            <Tab className="tab" onClick={() => fetchMovies("top_rated")}>
-              Top Rated
-            </Tab>
-            <Tab className="tab" onClick={() => fetchMovies("now_playing")}>
-              Now Playing
-            </Tab>
-            <Tab className="tab" onClick={() => fetchMovies("upcoming")}>
-              Upcoming
-            </Tab>
-          </TabList>
-          <TabPanel>
-            <div className="tab-panel-content tab-panel-content-overview">
-              <div className="movie-container">
-                <div className="movie-poster">
-                  <Movies title="Popular Movies" movies={popularMovies} />
-                </div>
-              </div>
-            </div>
-          </TabPanel>
-          <TabPanel>
-            {/* <h2 className="tab-panel-title">Top Rated</h2> */}
-            <div className="tab-panel-content tab-panel-content-overview">
-              <div className="movie-container">
-                <div className="movie-poster">
-                  <Movies title="Popular Movies" movies={topRated} />
-                </div>
-              </div>
-            </div>
-          </TabPanel>
-          <TabPanel>
-            {/* <h2 className="tab-panel-title">Now Playing</h2> */}
-            <div className="tab-panel-content tab-panel-content-overview">
-              <div className="movie-container">
-                <div className="movie-poster">
-                  <Movies title="Popular Movies" movies={nowPlaying} />
-                </div>
-              </div>
-            </div>
-          </TabPanel>
+      <div className="home-page__content">
+        <GenreChips genres={genres} />
 
-          <TabPanel>
-            {/* <h2 className="tab-panel-title">Upcoming</h2> */}
-            <div className="tab-panel-content tab-panel-content-overview">
-              <div className="movie-container">
-                <div className="movie-poster">
-                  <Movies title="Popular Movies" movies={upcoming} />
-                </div>
-              </div>
-            </div>
-          </TabPanel>
-        </Tabs>
-      </section>
+        {error ? <p className="home-page__error">{error}</p> : null}
+
+        <PosterRow id="trending" title="Trending Now" movies={trending} />
+        <PosterRow id="popular" title="Popular Picks" movies={popular} />
+        <PosterRow id="top-rated" title="Top Rated" movies={topRated} />
+        <PosterRow id="upcoming" title="Upcoming" movies={upcoming} />
+      </div>
     </main>
   );
 };

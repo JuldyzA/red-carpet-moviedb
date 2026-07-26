@@ -1,22 +1,47 @@
-button {
-    font-size: 1.5rem;
-    padding: 0.5rem 0.5rem;
-    border-radius: 30%;
-    background-color: rgba(54, 50, 51, 0.2);
-    backdrop-filter: blur(5px);
-    /* width: 3.1rem;
-    height: 3.1rem; */
-    
-  }
-  
-  button:active {
-    background-color: rgba(54, 50, 51, 0.5);
-  }
-  
-  button:hover {
-    background-color: rgba(101, 43, 58, 0.5);
+.favourite-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    padding: 0.65rem;
+    border: 1px solid rgba(228, 179, 99, 0.22);
+    border-radius: 999px;
+    background: rgba(6, 6, 9, 0.55);
+    color: #f5f5f5;
+    backdrop-filter: blur(14px);
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
   }
 
-  button.large-favourite {
-    font-size: 2rem;
+.favourite-button:hover {
+    border-color: #e4b363;
+    color: #e4b363;
+    transform: translateY(-1px);
+  }
+
+.favourite-button:active {
+    transform: translateY(0) scale(0.97);
+  }
+
+.favourite-button.large-favourite {
+    min-width: 3.25rem;
+    min-height: 3.25rem;
+    font-size: 1.35rem;
+  }
+
+.favourite-button.hero-slider__favorite {
+    min-width: 3.25rem;
+    min-height: 3.25rem;
+    border-color: rgba(255, 255, 255, 0.16);
+  }
+
+.favourite-button.poster-card__favorite {
+    position: absolute;
+    top: 0.9rem;
+    right: 0.9rem;
+    z-index: 2;
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    background: rgba(5, 5, 7, 0.66);
   }
