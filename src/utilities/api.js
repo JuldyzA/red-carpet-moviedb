@@ -1,6 +1,5 @@
 
-const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
-const BASE_URL = "https://api.themoviedb.org/3"
+const BASE_URL = "/api";
 
 // "images": {
 //     "base_url": "http://image.tmdb.org/t/p/",
@@ -43,7 +42,7 @@ const BASE_URL = "https://api.themoviedb.org/3"
 //     ]
 //   }
 function getMovieId(id){
-  return fetch(`${BASE_URL}/movie/${id}?api_key=${API_KEY}`)
+  return fetch(`${BASE_URL}/movie/${id}`)
   .then((response) => {
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.statusText}`);
@@ -55,7 +54,7 @@ function getMovieId(id){
 }
 
 async function getHeroImagePopular() {
-  const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`);
+  const response = await fetch(`${BASE_URL}/movies/popular`);
   if (!response.ok) {
     throw new Error(`Network response was not ok: ${response.statusText}`);
   }
@@ -64,7 +63,7 @@ async function getHeroImagePopular() {
 }
 
 async function getPopularMovies() {
-  const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`);
+  const response = await fetch(`${BASE_URL}/movies/popular`);
   if (!response.ok) {
     throw new Error(`Network response was not ok: ${response.statusText}`);
   }
@@ -73,7 +72,7 @@ async function getPopularMovies() {
 }
 
 async function getTopRatedMovies() {
-  const response = await fetch(`${BASE_URL}/movie/top_rated?api_key=${API_KEY}`);
+  const response = await fetch(`${BASE_URL}/movies/top-rated`);
   if (!response.ok) {
     throw new Error(`Network response was not ok: ${response.statusText}`);
   }
@@ -81,7 +80,7 @@ async function getTopRatedMovies() {
   return data;
 }
 async function getNowPlayingMovies() {
-  const response = await fetch(`${BASE_URL}/movie/now_playing?api_key=${API_KEY}`);
+  const response = await fetch(`${BASE_URL}/movies/now-playing`);
   if (!response.ok) {
     throw new Error(`Network response was not ok: ${response.statusText}`);
   }
@@ -89,7 +88,7 @@ async function getNowPlayingMovies() {
   return data;
 }
 async function getUpcomingMovies() {
-  const response = await fetch(`${BASE_URL}/movie/upcoming?api_key=${API_KEY}`);
+  const response = await fetch(`${BASE_URL}/movies/upcoming`);
   if (!response.ok) {
     throw new Error(`Network response was not ok: ${response.statusText}`);
   }
@@ -97,7 +96,7 @@ async function getUpcomingMovies() {
   return data;
 }
 async function getMovieVideos(id) {
-  const response = await fetch(`${BASE_URL}/movie/${id}/videos?api_key=${API_KEY}`);
+  const response = await fetch(`${BASE_URL}/movie/${id}/videos`);
   if (!response.ok) {
     throw new Error(`Network response was not ok: ${response.statusText}`);
   }
@@ -106,7 +105,7 @@ async function getMovieVideos(id) {
 }
 
 async function getTrendingMovies() {
-  const response = await fetch(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}`);
+  const response = await fetch(`${BASE_URL}/movies/trending?window=day`);
   if (!response.ok) {
     throw new Error(`Network response was not ok: ${response.statusText}`);
   }
@@ -117,7 +116,7 @@ async function getTrendingMovies() {
 
 // get the first 5 cast members for a movie
   async function getCastMembers(movieId) {
-    const response = await fetch(`${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`);
+    const response = await fetch(`${BASE_URL}/movie/${movieId}/credits`);
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.statusText}`);
     }

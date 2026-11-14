@@ -133,19 +133,18 @@ The Cypress API tests use the non-public `TMDB_API_KEY` variable.
 Example:
 
 ```text
-VITE_TMDB_API_KEY=your_tmdb_api_key
+TMDB_API_KEY=your_tmdb_api_key
 ```
 
-For Cypress, add this to `.env` instead:
+The same variable is used by Cypress:
 
 ```text
 TMDB_API_KEY=your_tmdb_api_key
 ```
 
-The real API key is not committed to GitHub. `VITE_TMDB_API_KEY` is embedded
-in the browser bundle by Vite, so it must be configured in Vercel for the
-deployed app. Do not replace it with `TMDB_API_KEY` unless the app is changed
-to use a server-side API proxy.
+The real API key is not committed to GitHub. Configure `TMDB_API_KEY` in
+Vercel for the Production environment. The frontend calls the Vercel API
+function, which adds the key when it requests data from TMDB.
 
 >>Project Purpose
 
