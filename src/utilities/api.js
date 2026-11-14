@@ -42,7 +42,7 @@ const BASE_URL = "/api";
 //     ]
 //   }
 function getMovieId(id){
-  return fetch(`${BASE_URL}/movie/${id}`)
+  return fetch(`${BASE_URL}/movie?id=${id}`)
   .then((response) => {
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.statusText}`);
@@ -96,7 +96,7 @@ async function getUpcomingMovies() {
   return data;
 }
 async function getMovieVideos(id) {
-  const response = await fetch(`${BASE_URL}/movie/${id}/videos`);
+  const response = await fetch(`${BASE_URL}/movie-videos?id=${id}`);
   if (!response.ok) {
     throw new Error(`Network response was not ok: ${response.statusText}`);
   }
@@ -105,7 +105,7 @@ async function getMovieVideos(id) {
 }
 
 async function getTrendingMovies() {
-  const response = await fetch(`${BASE_URL}/movies/trending?window=day`);
+  const response = await fetch(`${BASE_URL}/trending`);
   if (!response.ok) {
     throw new Error(`Network response was not ok: ${response.statusText}`);
   }
@@ -116,7 +116,7 @@ async function getTrendingMovies() {
 
 // get the first 5 cast members for a movie
   async function getCastMembers(movieId) {
-    const response = await fetch(`${BASE_URL}/movie/${movieId}/credits`);
+    const response = await fetch(`${BASE_URL}/movie-credits?id=${movieId}`);
     if (!response.ok) {
       throw new Error(`Network response was not ok: ${response.statusText}`);
     }
