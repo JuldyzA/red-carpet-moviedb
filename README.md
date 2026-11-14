@@ -127,7 +127,8 @@ npx cypress run
 
 >>Environment Variables
 
-The project uses a TMDB API key stored in an environment variable.
+The browser build uses a TMDB API key stored in a Vite environment variable.
+The Cypress API tests use the non-public `TMDB_API_KEY` variable.
 
 Example:
 
@@ -135,7 +136,16 @@ Example:
 VITE_TMDB_API_KEY=your_tmdb_api_key
 ```
 
-The real API key is not committed to GitHub.
+For Cypress, add this to `.env` instead:
+
+```text
+TMDB_API_KEY=your_tmdb_api_key
+```
+
+The real API key is not committed to GitHub. `VITE_TMDB_API_KEY` is embedded
+in the browser bundle by Vite, so it must be configured in Vercel for the
+deployed app. Do not replace it with `TMDB_API_KEY` unless the app is changed
+to use a server-side API proxy.
 
 >>Project Purpose
 
@@ -150,4 +160,3 @@ I later expanded it by adding a Cypress test suite to demonstrate my knowledge o
 - Network request validation
 - Debugging
 - Test case design
-
