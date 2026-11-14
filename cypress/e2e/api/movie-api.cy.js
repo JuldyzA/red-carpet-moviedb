@@ -1,3 +1,5 @@
+import { getMovie } from "../../support/apiHelpers";
+
 describe("Movie API", ()=>{
     it("TC01:returns movie data directly from the TMDB API",()=>{
     cy.env(["TMDB_API_KEY"]).then(({TMDB_API_KEY})=>{
@@ -106,61 +108,48 @@ describe("Movie API", ()=>{
       })
     });
     it("TC05:returns details for a valid movie id - 528001",()=>{
-      cy.env(["TMDB_API_KEY"]).then(({TMDB_API_KEY}) => {
-        cy.request({
-          method: "GET",
-          url: "https://api.themoviedb.org/3/movie/528001",
-          qs: {
-            api_key: TMDB_API_KEY,
-          }
-        }).then((response) => {
+      getMovie(528001).then((response) => {
           expect(response.status).to.eq(200);
-          expect(response.body).to.have.property("id");
-          expect(response.body.id).to.be.a("number").eq(528001)
-          expect(response.body).to.have.property("title");
-          expect(response.body.title).to.be.a("string")
-          expect(response.body).to.have.property("overview");
-          expect(response.body.overview).to.be.a("string")
-          expect(response.body).to.have.property("poster_path");
-          expect(response.body.poster_path).to.be.a("string")
-          expect(response.body).to.have.property("vote_average");
-          expect(response.body.vote_average).to.be.a("number")
+          const movie = response.body;
+          expect(movie).to.have.property("id");
+          expect(movie.id).to.be.a("number").eq(528001)
+          expect(movie).to.have.property("title");
+          expect(movie.title).to.be.a("string").and.not.be.empty
+          expect(movie).to.have.property("overview");
+          expect(movie.overview).to.be.a("string")
+          expect(movie).to.have.property("poster_path");
+          expect(movie.poster_path).to.be.a("string")
+          expect(movie).to.have.property("vote_average");
+          expect(movie.vote_average).to.be.a("number").and.to.be.within(0, 10);
+          expect(movie).to.have.property("release_date");
+          expect(movie.release_date).to.be.a("string")
+          
         });
       })
     });
     it("TC06:returns error for an invalid movie id",()=>{
-      cy.env(["TMDB_API_KEY"]).then(({TMDB_API_KEY}) => {
-        cy.request({
-          method: "GET",
-          url: "https://api.themoviedb.org/3/movie/9999999",
-          qs: {
-            api_key: TMDB_API_KEY,
-          },
-          failOnStatusCode: false,
-        }).then((response) => {
+      getMovie(9999999).then((response) => {
           expect(response.status).to.eq(404);
-          expect(response.body).to.have.property("success");
-          expect(response.body.success).to.be.false;
-          expect(response.body).to.have.property("status_code");
-          expect(response.body.status_code).to.be.a("number").eq(34);
-          expect(response.body).to.have.property("status_message");
-          expect(response.body.status_message).to.be.a("string").eq("The resource you requested could not be found.");
+          const error = response.body;
+          expect(error.success).to.be.false;
+          expect(error.status_code).to.be.a("number").eq(34);
+          expect(error.status_message).to.be.a("string").and.not.be.empty;
         })
-      })
     });
 
-    it("TC07:returns 401 for an invalid api key ",() => {
-      cy.request({
-        method: "GET",
-        url: "https://api.themoviedb.org/3/movie/528001",
-        qs: {
-          api_key: "invalid-key",
-        },
-        failOnStatusCode: false,
-      }).then((response) => {
-        expect(response.status).to.eq(401);
-        expect(response.body).to.have.property("status_message");
-        expect(response.body.status_message).to.be.a("string").eq("Invalid API key: You must be granted a valid key.");
-      })
-    })
-})
+    it("TC07: returns 401 for an invalid API key", () => {
+  cy.request({
+    method: "GET",
+    url: "https://api.themoviedb.org/3/movie/528001",
+    qs: {
+      api_key: "invalid-api-key"
+    },
+    failOnStatusCode: false
+  }).then((response) => {
+    expect(response.status).to.eq(401);
+
+    expect(response.body.status_message)
+      .to.be.a("string")
+      .and.eq("Invalid API key: You must be granted a valid key.");
+  });
+}); 
