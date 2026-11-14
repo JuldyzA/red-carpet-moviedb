@@ -32,7 +32,7 @@ async function requestJson({ backendEndpoint, params = {} }) {
 
 export function fetchTrending(window = "week") {
   return requestJson({
-    backendEndpoint: "/movies/trending",
+    backendEndpoint: "/trending",
     params: { window, language: "en-US" },
   });
 }
