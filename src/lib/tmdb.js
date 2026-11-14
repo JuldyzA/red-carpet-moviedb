@@ -60,7 +60,7 @@ export function fetchUpcoming() {
 
 export function fetchGenres() {
   return requestJson({
-    backendEndpoint: "/genres/movie/list",
+    backendEndpoint: "/genres",
     params: { language: "en-US" },
   });
 }
